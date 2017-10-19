@@ -3,18 +3,18 @@
  */
 import _ from 'lodash';
 
-import printMe from './print.js';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-function component() {
-    var element = document.createElement('div');
-    element.innerHTML = _.join(['Hello' , 'webpack'] , '');
 
-    var buttonView = document.createElement('button');
-    buttonView.innerHTML = 'Click me and check consle';
-    buttonView.onclick = printMe;
-    element.appendChild(buttonView);
-
-    return element;
+if (process.env.NODE_ENV !== 'production') {
+    console.log('we are in development mode!');
+    console.log("haha");
 }
 
-document.body.appendChild(component());
+
+ReactDOM.render(
+    <h1>ahhahaha</h1> ,
+    document.getElementById('app')
+);
+
