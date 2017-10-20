@@ -19,26 +19,9 @@ module.exports = {
     //输出
     output: {
         // filename: "bundle.js",
-        filename: '[name].bundle.js',
+        filename: 'bundle.js',
         path: path.resolve(__dirname, "dist")
     } ,
-
-    plugins: [
-        //清理 输出目录中的不需要的资源
-        new CleanWebpackPlugin(['dist']),
-        //自动加载bundle.js到 index.html中
-        new HtmlWebpackPlugin({
-            title: 'OutPut manager',
-            template : 'index.html'
-        }),
-        //清除没有使用到函数
-        new UglifyjsWebpackPlugin() ,
-
-        //为了减少重复的资源
-        new webpack.optimize.CommonsChunkPlugin({
-            name : 'common'
-        })
-    ],
 
     //建立一个开发环境，使我们的开发变得更容易一些。 inline-source-map 不要用在生产环境
     devtool: 'inline-source-map',
@@ -100,7 +83,19 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+
+    plugins: [
+        //清理 输出目录中的不需要的资源
+        new CleanWebpackPlugin(['dist']),
+        //自动加载bundle.js到 index.html中
+        new HtmlWebpackPlugin({
+            title: 'OutPut manager' ,
+            template : './src/index.html'
+        }),
+        //清除没有使用到函数
+        new UglifyjsWebpackPlugin()
+    ],
 
 
 };
